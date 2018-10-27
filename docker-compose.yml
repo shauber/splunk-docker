@@ -1,0 +1,17 @@
+version: '3'
+services:
+  splunk:
+    container_name: splunk
+    image: splunk/splunk:latest
+    restart: always
+    ports:
+      - '8000:8000'
+      - '5514:5514'
+      - '5514:5514/udp'
+    deploy:
+    environment:
+      - 'SPLUNK_START_ARGS=--accept-license'
+      - 'SPLUNK_PASSWORD=Oct.23.18'
+    volumes:
+      - /data/splunk/etc:/opt/splunk/etc
+      - /data/splunk/var:/opt/splunk/var
